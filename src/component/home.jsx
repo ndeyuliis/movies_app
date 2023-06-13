@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
@@ -8,22 +8,16 @@ import Grid from "@mui/material/Unstable_Grid2";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import { useMoviesContext} from "../MoviesProvider";
-
+import {InfoPelis} from "./infoPelis";
+import {Link} from "react-router-dom";
 
 function Home() {
   const [search, setSearch] = useState("");
   const [ranking, setRanking] = useState();
   const [hover, setHover] = useState(-1);
+  const [info, setInfo] = useState(-1);
 
-  const movies = useMoviesContext();
-
-  console.log(movies, "movies")
-
-  function handleClick (info){
-    console.log(info)
-  }
-
-
+  const {movies, setMovies} = useMoviesContext();
 
   return (
     <Box sx={{ background: "white" }}>
@@ -36,16 +30,24 @@ function Home() {
         >
           {movies.map((mov) => (
             <Grid item xs={2} sm={3} md={4} key={mov.id}>
-              <CardActionArea onClick={() => handleClick(mov)} sx={{ background: "#8A0808" }}>
+
+              <CardActionArea sx={{ background: "#8A0808" }}>
+              <Link className="infopeli-link"  to={ `/infopelis/${mov.id}`} state={{mov}}>
+
                 <CardMedia
                   component="img"
                   height="100%"
+                 
                   image={
                     "https://image.tmdb.org/t/p/original/" + mov.poster_path
                   }
                   alt={mov.original_title}
                 />
+ </Link>
+
               </CardActionArea>
+             
+
             </Grid>
           ))}
         </Grid>

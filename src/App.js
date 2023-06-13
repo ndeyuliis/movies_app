@@ -9,9 +9,9 @@ import MoviesProvider from './MoviesProvider';
 
 function App() {
   return (
-    <MoviesProvider>
-     <Rout/>
-     </MoviesProvider>
+    <div>
+      <Rout/>
+      </div>
   );
 }
 

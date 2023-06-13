@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useState } from "react";
+
 import axios from "axios";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -14,6 +15,7 @@ import NavBar from "./component/navBar";
 
 const moviesContext = React.createContext();
 const searchContext = React.createContext();
+const busquedaContext = React.createContext();
 
 
 export function useMoviesContext() {
@@ -24,14 +26,19 @@ export function useMoviesContext() {
 export function useSearchContext() {
   return useContext(searchContext);
 }
+export function useBusquedaContext() {
+    return useContext(busquedaContext);
+}
 
-function MoviesProvider() {
+
+
+function MoviesProvider({children}) {
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
   const [ranking, setRanking] = useState();
-  const [hover, setHover] = useState(-1);
-
-  console.log(ranking, "ranking");
+  const [info, setInfo] = useState("");
+  const contextSearch = {search, setSearch}  
+  const contextMovies = {movies, setMovies}  
 
   const url = "https://api.themoviedb.org/3/";
 
@@ -47,20 +54,23 @@ function MoviesProvider() {
       console.log(error);
     }
   };
-
   useEffect(() => {
-    getMovies();
-  }, []);
+      if(search !== ""){
+
+      }else{
+      getMovies();
+
+  }}, []);
 
   return (
-    <moviesContext.Provider value={movies}>
-    <searchContext.Provider value={setMovies}>
-      <NavBar/>
-      <Home/>
-      </searchContext.Provider>
+    <moviesContext.Provider value={contextMovies}>
+    <busquedaContext.Provider value={contextSearch}>
+      
+      {children}
+      </busquedaContext.Provider>
 
     </moviesContext.Provider>
   );
 }
 
-export default MoviesProvider;
+export {MoviesProvider, moviesContext};

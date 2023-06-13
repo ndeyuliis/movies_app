@@ -7,12 +7,17 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
-import { useSearchContext}  from "../MoviesProvider";
+import { useMoviesContext}  from "../MoviesProvider";
+import { useBusquedaContext}  from "../MoviesProvider";
+
 
  function NavBar () {
-  const [search, setSearch] = useState("");
+ // const [search, setSearch] = useState("");
 
-  const setMovies = useSearchContext();
+  const {movies, setMovies} = useMoviesContext();
+
+    const {search, setSearch} = useBusquedaContext();
+
 
   const url = "https://api.themoviedb.org/3/";
 
