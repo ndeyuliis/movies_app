@@ -40,7 +40,7 @@ export function InfoPelis() {
         sx={{
           width: "20em",
           m: "auto",
-          background: "#8A0808",
+          background: "#424242",
           borderRadius: "10px",
         }}
       >
