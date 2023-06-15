@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.boton{
+  background-color: #0F1014;
+  color: white;
+  outline: none;
+  border: 1px solid white;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.font-nav{
+  background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(img/phot.jpg);
+}
+  
+
+
