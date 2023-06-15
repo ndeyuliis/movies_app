@@ -32,11 +32,10 @@ function Home() {
   };
 
   const filteredMovies =
-    ranking !== null
+    ranking !== null && ranking !== 0
       ? movies.filter(
           (mov) =>
-            mov.vote_average <= ranking && mov.vote_average >= ranking - 2
-        )
+            mov.vote_average <= ranking && mov.vote_average >= ranking - 2)
       : movies;
 
   console.log(filteredMovies);
