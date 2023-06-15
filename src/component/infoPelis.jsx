@@ -34,7 +34,8 @@ export function InfoPelis() {
   }
 
   return (
-    <Box sx={{ background: "#1C1C1C", pt: 5, pb: 8 }}>
+    <Box sx={{ background: "#1C1C1C", pt: 5, pb: 8, minHeight: "100vh" 
+  }}>
       <Card
         sx={{
           width: "20em",
